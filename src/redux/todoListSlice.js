@@ -10,30 +10,33 @@ const todoListSlice = createSlice({
   initialState: initialTodoListState,
   reducers: {
     addItem: (state, action) => {
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-      };
+      // Checking to see if the input field is empty
+      if (action.payload !== "") {
+        return {
+          ...state,
+          items: [...state.items, action.payload],
+        };
+      }
     },
-    removeItem: (state, action) => {
-      const tempArray = state.items.filter((item) => action.payload !== item);
-      return {
-        ...state,
-        items: tempArray,
-      };
-    },
-    increaseCompleted: (state, action) => {
-      return {
-        ...state,
-        tasksCompleted: state.tasksCompleted + action.payload,
-      };
-    },
-    decreaseCompleted: (state, action) => {
-      return {
-        ...state,
-        tasksCompleted: state.tasksCompleted - action.payload,
-      };
-    },
+  },
+  removeItem: (state, action) => {
+    const tempArray = state.items.filter((item) => action.payload !== item);
+    return {
+      ...state,
+      items: tempArray,
+    };
+  },
+  increaseCompleted: (state, action) => {
+    return {
+      ...state,
+      tasksCompleted: state.tasksCompleted + action.payload,
+    };
+  },
+  decreaseCompleted: (state, action) => {
+    return {
+      ...state,
+      tasksCompleted: state.tasksCompleted - action.payload,
+    };
   },
 });
 
