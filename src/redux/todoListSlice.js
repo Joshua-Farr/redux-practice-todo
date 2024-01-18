@@ -18,25 +18,26 @@ const todoListSlice = createSlice({
         };
       }
     },
-  },
-  removeItem: (state, action) => {
-    const tempArray = state.items.filter((item) => action.payload !== item);
-    return {
-      ...state,
-      items: tempArray,
-    };
-  },
-  increaseCompleted: (state, action) => {
-    return {
-      ...state,
-      tasksCompleted: state.tasksCompleted + action.payload,
-    };
-  },
-  decreaseCompleted: (state, action) => {
-    return {
-      ...state,
-      tasksCompleted: state.tasksCompleted - action.payload,
-    };
+
+    removeItem: (state, action) => {
+      const tempArray = state.items.filter((item) => action.payload !== item);
+      return {
+        ...state,
+        items: tempArray,
+      };
+    },
+    increaseCompleted: (state, action) => {
+      return {
+        ...state,
+        tasksCompleted: state.tasksCompleted + action.payload,
+      };
+    },
+    decreaseCompleted: (state, action) => {
+      return {
+        ...state,
+        tasksCompleted: state.tasksCompleted - action.payload,
+      };
+    },
   },
 });
 
